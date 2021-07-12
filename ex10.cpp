@@ -1,39 +1,37 @@
 #include <iostream.h>
 #include <iomanip.h>
 
-int k;                           // брой на учебните дисциплини
-const int SIZE = 12;             // максимална дължина на име
-const int SIZE_MAX1 = 10;        // максимален брой на
-                                 // учебните дисциплини
-const int SIZE_MAX2 = 25;        // максимален брой на
-                                 // студентите от групата
+int k;                           
+const int SIZE = 12;             
+const int SIZE_MAX1 = 10;        
+                                 
+const int SIZE_MAX2 = 25;        
+                                 
 
-// декларация на структурата Student
 struct Student
 {
-    int fac_n;                  // факултетен номер на студент
-    char name[SIZE];            // Фамилия на студент
-    double subjects[SIZE_MAX1]; // масив с оценките на студент
+    int fac_n;                  
+    char name[SIZE];            
+    double subjects[SIZE_MAX1]; 
 };
 
-// въвеждане на данни за студент
+
 void create_student(Student& s)
 {
     do
     {
-        cout << "Факултетен номер: ";
+        cout << "Г”Г ГЄГіГ«ГІГҐГІГҐГ­ Г­Г®Г¬ГҐГ°: ";
         cin >> s.fac_n;
     } while(s.fac_n <= 0 || s.fac_n > 99999);
 
-    cout << "Фамилия: "; cin >> s.name;
+    cout << "Г”Г Г¬ГЁГ«ГЁГї: "; cin >> s.name;
     for(int i = 0; i < k; i++)
     {
-        cout << "Оценка по " << i+1 << "-и предмет: ";
+        cout << "ГЋГ¶ГҐГ­ГЄГ  ГЇГ® " << i+1 << "-ГЁ ГЇГ°ГҐГ¤Г¬ГҐГІ: ";
         cin >> s.subjects[i];
     }
 }
 
-// извеждане на данните за студент
 void print_student(const Student& s)
 {
     cout << setw(5) << s.fac_n
@@ -42,7 +40,6 @@ void print_student(const Student& s)
         cout << setw(5) << s.subjects[i];
 }
 
-// намиране на средния успех на студент
 double result(const Student& s)
 {
     double u = 0;
@@ -52,19 +49,17 @@ double result(const Student& s)
     return u;
 }
 
-// а)
-// въвеждане на данни за студентите от една група
+
 void create_group(int n, Student *s)
 {
     for(int i = 0; i < n; i++)
     {
-        cout << "Данни за " << i+1 << "-и студент: ";
+        cout << "Г„Г Г­Г­ГЁ Г§Г  " << i+1 << "-ГЁ Г±ГІГіГ¤ГҐГ­ГІ: ";
         create_student(s[i]);
     }
 }
 
-// б)
-// извеждане на заглавието (антетката) на таблицата
+
 void print_table()
 {
     cout << setiosflags(ios::fixed|ios::showpoint)
@@ -73,26 +68,25 @@ void print_table()
     for(i = 0; i < 5+SIZE+2+5*(k+1)+1; i++)
         cout << "=";
     cout << endl;
-    cout << setw(5) << "Ф.Н."
-         << setw(SIZE+2) << "Фамилия";
+    cout << setw(5) << "Г”.ГЌ."
+         << setw(SIZE+2) << "Г”Г Г¬ГЁГ«ГЁГї";
 
     for(i = 0; i < k; i++)
-        cout << setw(4) << "Д-" << i+1;
-    cout << setw(6) << "Ср.у." << endl;
+        cout << setw(4) << "Г„-" << i+1;
+    cout << setw(6) << "Г‘Г°.Гі." << endl;
     for(i = 0; i < 5+SIZE+2+5*(k+1)+1; i++)
         cout << "=";
     cout << endl;
 }
 
-// извеждане на таблицата с данните
-// за студентите от групата
+
 void print_group(int n, Student *s)
 {
-    // извеждане на заглавието на таблицата 
+    
     print_table();
     int i, j;
 
-    // намиране на средния успех по всяка учебна дисциплина
+    
     double temp[SIZE_MAX1] = {0, };
     for(j = 0; j < k; j++)
     {
@@ -101,9 +95,7 @@ void print_group(int n, Student *s)
         temp[j] = temp[j]/n;
     }
 
-    // извеждане на данните за студентите и
-    // намиране на сумата sum от средния
-    // успех на всички студенти
+   
     double sum = 0;
     for(i = 0; i < n; i++)
     {
@@ -115,18 +107,14 @@ void print_group(int n, Student *s)
     for(i = 0; i < 5+SIZE+2+5*(k+1)+1; i++)
         cout << "=";
 
-    // извеждане на средния успех на студентите
-    // от групата по всички предмети
+    
     cout << endl << setw(5+SIZE+2+5) << temp[0];
     for(j = 1; j < k; j++)
         cout << setw(5) << temp[j];
     cout << setw(6) << sum/n << endl;
 }
 
-// в)
-// сортиране в низходящ ред по среден успех на
-// масива от указатели към данните за студентите
-// чрез метода на пряката селекция
+
 void sortgroup(int n, Student **s)
 {
     for(int i = 0; i < n-1; i++)
@@ -147,14 +135,11 @@ void sortgroup(int n, Student **s)
     }
 }
 
-// г)
-// извеждане на сортираните в низходящ ред по среден
-// успех данни за студентите от групата
 void print_sort_group(int n, Student **s)
 {
-    // извеждане на заглавието на таблицата
+    
     print_table();
-    // извеждане на сортираните данни
+    
     for(int i = 0; i < n; i++)
     {
         print_student(*s[i]);
@@ -165,41 +150,35 @@ void print_sort_group(int n, Student **s)
 
 int main()
 {
-    // въвеждане на броя на учебните дисциплини
+    
     do
     { 
-        cout << "Въведете стойност за k от 1 до " 
+        cout << "Vuvedete stoinost za k ot 1 do " 
              << SIZE_MAX1 << ": ";
         cin >> k;
     } while (k < 1 || k > SIZE_MAX1);
-    // въвеждане на броя на студентите на групата
+    
     int n;
     do
     { 
-        cout << "Въведете стойност за n от 1 до "
+        cout << "Vuvedete stoinost za n ot 1 do  "
              << SIZE_MAX2 << ": ";
         cin >> n;
     } while (n < 1 || n > SIZE_MAX2);
 
-    Student s[SIZE_MAX2];   // ще съдържа данни за студентите
-    Student* ps[SIZE_MAX2]; // ще съдържа указатели към елементите на масива s
+    Student s[SIZE_MAX2];   
+    Student* ps[SIZE_MAX2]; 
 
-    // създаване на масива s, съдържащ информация
-    // за студентите от дадена група
     create_group(n, s);
 
-    // извеждане на информацията за студентите от групата
     print_group(n, s);
     
-    // инициализиране на елементите на масива от указатели
     for(int i = 0; i < n; i++)
         ps[i] = &s[i];
     
-    // сортиране на информацията за студентите от групата
     sortgroup(n, ps);
     cout << endl;
     
-    // извеждане на сортираната информация за студентите
     print_sort_group(n, ps);
     return 0;
 }
