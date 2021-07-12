@@ -1,2 +1,2 @@
-# OOP-Cpp
+# OOP
 Обектно-ориентирано програмиране/Object-oriented programming
