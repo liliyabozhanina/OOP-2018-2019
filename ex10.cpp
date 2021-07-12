@@ -20,14 +20,14 @@ void create_student(Student& s)
 {
     do
     {
-        cout << "Ôàêóëòåòåí íîìåð: ";
+        cout << "Fakulteten nomer: ";
         cin >> s.fac_n;
     } while(s.fac_n <= 0 || s.fac_n > 99999);
 
-    cout << "Ôàìèëèÿ: "; cin >> s.name;
+    cout << "Familiq: "; cin >> s.name;
     for(int i = 0; i < k; i++)
     {
-        cout << "Îöåíêà ïî " << i+1 << "-è ïðåäìåò: ";
+        cout << "Ocenka po " << i+1 << "-i predmet: ";
         cin >> s.subjects[i];
     }
 }
@@ -54,7 +54,7 @@ void create_group(int n, Student *s)
 {
     for(int i = 0; i < n; i++)
     {
-        cout << "Äàííè çà " << i+1 << "-è ñòóäåíò: ";
+        cout << "Danni za " << i+1 << "-i student: ";
         create_student(s[i]);
     }
 }
@@ -68,12 +68,12 @@ void print_table()
     for(i = 0; i < 5+SIZE+2+5*(k+1)+1; i++)
         cout << "=";
     cout << endl;
-    cout << setw(5) << "Ô.Í."
-         << setw(SIZE+2) << "Ôàìèëèÿ";
+    cout << setw(5) << "F.N."
+         << setw(SIZE+2) << "Familiq";
 
     for(i = 0; i < k; i++)
-        cout << setw(4) << "Ä-" << i+1;
-    cout << setw(6) << "Ñð.ó." << endl;
+        cout << setw(4) << "D-" << i+1;
+    cout << setw(6) << "Sr.u." << endl;
     for(i = 0; i < 5+SIZE+2+5*(k+1)+1; i++)
         cout << "=";
     cout << endl;
